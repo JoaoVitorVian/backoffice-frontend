@@ -1,0 +1,60 @@
+<form [formGroup]="pessoaForm" class="container">
+  <div class="form-container">
+  <h2 class="form-title">Cadastro de Pessoa</h2>
+  <div class="form-input">
+    <label class="form-label">Tipo de Pessoa:</label>
+    <div class="form-check">
+      <input type="radio" id="tipoPessoaJuridica" value="Jurídica" formControlName="tipoDePessoa" class="form-check-input">
+      <label for="tipoPessoaJuridica" class="form-check-label">Jurídica</label>
+    </div>
+    <div class="form-check">
+      <input type="radio" id="tipoPessoaFisica" value="Física" formControlName="tipoDePessoa" class="form-check-input">
+      <label for="tipoPessoaFisica" class="form-check-label">Física</label>
+    </div>
+  </div>
+
+
+  <div class="form-input">
+    <label for="documento" class="form-label">Documento:</label>
+    <input type="text" id="documento" formControlName="documento" class="form-control" required>
+  </div>
+
+  <div class="form-input">
+    <label for="name" class="form-label">Nome:</label>
+    <input type="text" id="name" formControlName="name" class="form-control" required>
+  </div>
+
+  <div class="form-input">
+    <label for="apelido" class="form-label">Apelido:</label>
+    <input type="text" id="apelido" formControlName="apelido" class="form-control">
+  </div>
+
+  <div class="form-input">
+    <label for="cep" class="form-label">CEP:</label>
+    <input type="text" id="cep" formControlName="cep" class="form-control" #cepInput (input)="consultarCEP()">
+  </div>
+
+  <div class="form-input">
+    <label for="localidade" class="form-label">Localidade:</label>
+    <input type="text" id="localidade" formControlName="localidade" class="form-control">
+  </div>
+
+  <div class="form-input">
+    <label for="bairro" class="form-label">Bairro:</label>
+    <input type="text" id="bairro" formControlName="bairro" class="form-control">
+  </div>
+
+  <div class="form-input">
+    <label for="qualificacoes" class="form-label">Qualificações:</label>
+    <input type="text" id="qualificacoes" formControlName="qualificacoes" class="form-control">
+    <div *ngIf="mensagemSucesso" class="alert alert-success">
+      {{ mensagemSucesso }}
+    </div>
+    <div *ngIf="mensagemErro" class="alert alert-danger">
+      {{ mensagemErro }}
+    </div>
+  </div>
+  <button *ngIf="pessoa" (click)="atualizarPessoa()" class="btn">Atualizar Cadastro</button>
+  <button (click)="cadastrarPessoa()" class="btn">Cadastrar Pessoa</button>
+</div>
+</form>

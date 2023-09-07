@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Lista de Pessoas Cadastradas</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tipo de Pessoa</th>
+        <th>Documento</th>
+        <th>Nome</th>
+        <th>Apelido</th>
+        <th>CEP</th>
+        <th>Localidade</th>
+        <th>Bairro</th>
+        <th>Qualificações</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pessoa of pessoas">
+        <td>{{ pessoa.tipoDePessoa }}</td>
+        <td>{{ pessoa.documento }}</td>
+        <td>{{ pessoa.name }}</td>
+        <td>{{ pessoa.apelido }}</td>
+        <td>{{ pessoa.cep }}</td>
+        <td>{{ pessoa.localidade }}</td>
+        <td>{{ pessoa.bairro }}</td>
+        <td>{{ pessoa.qualificacoes }}</td>
+        <td>
+          <button class="btn-edit" (click)="editarPessoa(pessoa)">Editar</button>
+          <button (click)="excluirPessoa(pessoa)" class="btn-delete">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

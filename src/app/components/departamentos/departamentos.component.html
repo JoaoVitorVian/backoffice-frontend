@@ -1,0 +1,21 @@
+<form [formGroup]="departamentoForm" class="container">
+  <div class="form-container">
+    <h2 class="form-title">Cadastro de Departamentos</h2>
+    <div class="form-input">
+      <label for="nomeDepartamento" class="form-label">Nome do Departamento:</label>
+      <input type="text" id="nomeDepartamento" formControlName="nomeDepartamento" class="form-control" required>
+    </div>
+    <div class="form-input">
+      <label for="nomeResponsavel" class="form-label">Nome do Responsável:</label>
+      <input type="text" id="nomeResponsavel" formControlName="nomeResponsavel" class="form-control">
+    </div>
+    <button (click)="cadastrarDepartamento()" class="btn btn-primary">Cadastrar Departamento</button>
+    <button *ngIf="departamento" (click)="atualizarDepartamento()" class="btn">Atualizar Departamento</button>
+    <div *ngIf="mensagemSucesso" class="alert alert-success">
+      {{ mensagemSucesso }}
+    </div>
+    <div *ngIf="mensagemErro" class="alert alert-danger">
+      {{ mensagemErro }}
+    </div>
+  </div>
+</form>
