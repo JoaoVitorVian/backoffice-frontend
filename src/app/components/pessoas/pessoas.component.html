@@ -16,7 +16,7 @@
 
   <div class="form-input">
     <label for="documento" class="form-label">Documento:</label>
-    <input type="text" id="documento" formControlName="documento" class="form-control" required>
+    <input type="text" id="documento" formControlName="documento" class="form-control" required appMaskCpfCnpj>
   </div>
 
   <div class="form-input">
@@ -24,7 +24,7 @@
     <input type="text" id="name" formControlName="name" class="form-control" required>
   </div>
 
-  <div class="form-input">
+  <div class="form-input" [hidden]="pessoaForm.get('tipoDePessoa')?.value !== 'Jurídica'">
     <label for="apelido" class="form-label">Apelido:</label>
     <input type="text" id="apelido" formControlName="apelido" class="form-control">
   </div>
@@ -45,14 +45,27 @@
   </div>
 
   <div class="form-input">
-    <label for="qualificacoes" class="form-label">Qualificações:</label>
-    <input type="text" id="qualificacoes" formControlName="qualificacoes" class="form-control">
-    <div *ngIf="mensagemSucesso" class="alert alert-success">
-      {{ mensagemSucesso }}
+    <label class="form-label">Qualificações:</label>
+    <div class="form-check">
+      <input type="radio" id="qualificacoesCliente" value="Cliente" formControlName="qualificacoes" class="form-check-input">
+      <label for="qualificacoesCliente" class="form-check-label">Cliente</label>
     </div>
-    <div *ngIf="mensagemErro" class="alert alert-danger">
-      {{ mensagemErro }}
+    <div class="form-check">
+      <input type="radio" id="qualificacoesFornecedor" value="Fornecedor" formControlName="qualificacoes" class="form-check-input">
+      <label for="qualificacoesFornecedor" class="form-check-label">Fornecedor</label>
     </div>
+    <div class="form-check">
+      <input type="radio" id="qualificacoesColaborador" value="Colaborador" formControlName="qualificacoes" class="form-check-input">
+      <label for="qualificacoesColaborador" class="form-check-label">Colaborador</label>
+    </div>
+  </div>
+
+
+  <div *ngIf="mensagemSucesso" class="alert alert-success">
+    {{ mensagemSucesso }}
+  </div>
+  <div *ngIf="mensagemErro" class="alert alert-danger">
+    {{ mensagemErro }}
   </div>
   <button *ngIf="pessoa" (click)="atualizarPessoa()" class="btn">Atualizar Cadastro</button>
   <button (click)="cadastrarPessoa()" class="btn">Cadastrar Pessoa</button>

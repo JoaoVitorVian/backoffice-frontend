@@ -10,6 +10,7 @@ import { DepartamentosComponent } from './components/departamentos/departamentos
 import { CadastroPessoaComponent } from './components/pessoas/pessoas.component';
 import { ListaPessoasComponent } from './components/lista-pessoas/lista-pessoas.component';
 import { ListaDepartamentoComponent } from './components/lista-departamento/lista-departamento.component';
+import { MaskCpfCnpjDirective } from './core/directives/mask-cpf-cnpj.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListaDepartamentoComponent } from './components/lista-departamento/list
     DepartamentosComponent,
     CadastroPessoaComponent,
     ListaPessoasComponent,
-    ListaDepartamentoComponent
+    ListaDepartamentoComponent,
+    MaskCpfCnpjDirective
   ],
   imports: [
     BrowserModule,
