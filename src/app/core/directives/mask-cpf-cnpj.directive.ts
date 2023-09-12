@@ -1,16 +1,16 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appMaskCpfCnpj]'
 })
 export class MaskCpfCnpjDirective {
-
+  @Input() tipoDePessoa: string | null = null;
   constructor(private el: ElementRef) {}
 
   @HostListener('input', ['$event']) onInputChange(event: any) {
     const value = event.target.value.replace(/\D/g, '');
 
-    if (value.length <= 11) {
+    if (this.tipoDePessoa === 'Física') {
       event.target.value = this.maskCpf(value);
     } else {
       event.target.value = this.maskCnpj(value);

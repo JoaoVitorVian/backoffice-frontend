@@ -23,7 +23,7 @@ export class DepartmentService {
   }
 
   excluirDepartamento(id: number): Observable<any> {
-    const url = `${this.baseUrl}/api/v1/departamento/remove-departamento${id}`;
+    const url = `${this.baseUrl}/api/v1/departamento/remove-departamento/${id}`;
     return this.http.delete(url);
   }
 }

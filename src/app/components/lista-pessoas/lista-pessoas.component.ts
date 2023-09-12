@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CadastroPessoaComponent } from '../pessoas/pessoas.component';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'src/app/services/users.api.service';
 
 @Component({
@@ -17,6 +17,10 @@ export class ListaPessoasComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregarPessoas();
+  }
+
+  exibirApelido(tipoDePessoa: string): boolean {
+    return tipoDePessoa === 'Jurídica';
   }
 
   carregarPessoas(): void {
@@ -53,6 +57,7 @@ export class ListaPessoasComponent implements OnInit {
         }
       },
       (reason) => {
+
       }
     );
   }

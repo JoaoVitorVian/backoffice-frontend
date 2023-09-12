@@ -19,7 +19,12 @@
         <td>{{ pessoa.tipoDePessoa }}</td>
         <td>{{ pessoa.documento }}</td>
         <td>{{ pessoa.name }}</td>
-        <td>{{ pessoa.apelido }}</td>
+        <td>
+          <ng-container *ngIf="exibirApelido(pessoa.tipoDePessoa); else emptyCell">
+            {{ pessoa.apelido }}
+          </ng-container>
+          <ng-template #emptyCell>&nbsp;</ng-template>
+        </td>
         <td>{{ pessoa.cep }}</td>
         <td>{{ pessoa.localidade }}</td>
         <td>{{ pessoa.bairro }}</td>

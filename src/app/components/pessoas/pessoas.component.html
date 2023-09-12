@@ -15,7 +15,7 @@
 
   <div class="form-input">
     <label for="documento" class="form-label">Documento:</label>
-    <input type="text" id="documento" formControlName="documento" class="form-control" required appMaskCpfCnpj>
+    <input type="text" id="documento" formControlName="documento" class="form-control" required appMaskCpfCnpj [tipoDePessoa]="pessoaForm.get('tipoDePessoa')?.value">
   </div>
 
   <div class="form-input">
