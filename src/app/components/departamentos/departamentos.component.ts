@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/services/api.service';
+import { DepartmentService } from './../../services/department.api.service';
 
 @Component({
   selector: 'app-departamentos',
@@ -13,7 +13,7 @@ export class DepartamentosComponent {
   mensagemErro: string | null = null;
   @Input() departamento: any;
 
-  constructor(private fb: FormBuilder, private ApiService: ApiService) {
+  constructor(private fb: FormBuilder, private DepartmentService: DepartmentService) {
     this.departamentoForm = this.fb.group({
       nomeDepartamento: ['', Validators.required],
       nomeResponsavel: ['']
@@ -31,7 +31,7 @@ export class DepartamentosComponent {
   atualizarDepartamento(): void {
     const dadosAtualizados = this.departamentoForm.value;
     const id = this.departamento.id;
-    this.ApiService.editarDepartamento(id, dadosAtualizados).subscribe(
+    this.DepartmentService.editarDepartamento(id, dadosAtualizados).subscribe(
       (response) => {
         console.log('Departamento atualizado com sucesso!', response);
         this.mensagemSucesso = 'Departamento atualizado com sucesso.';
@@ -52,7 +52,7 @@ export class DepartamentosComponent {
       nomeResponsavel: novoDepartamento.nomeResponsavel
     };
 
-    this.ApiService.cadastrarDepartamento(departamentoData).subscribe(
+    this.DepartmentService.cadastrarDepartamento(departamentoData).subscribe(
       (res) => {
         console.log('Departamento cadastrado com sucesso!', res);
         this.mensagemSucesso = 'Departamento cadastrado com sucesso.';

@@ -1,7 +1,7 @@
 import { Component, OnInit ,ElementRef, ViewChild, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import axios from 'axios';
-import { ApiService } from 'src/app/services/api.service';
+import { UserService } from 'src/app/services/users.api.service';
 
 @Component({
   selector: 'app-cadastro-pessoa',
@@ -18,7 +18,7 @@ export class CadastroPessoaComponent implements OnInit {
   @ViewChild('cepInput')
   cepInput!: ElementRef;
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService) {
+  constructor(private formBuilder: FormBuilder, private apiService: UserService) {
     this.pessoaForm = this.formBuilder.group({
       tipoDePessoa: ['', Validators.required],
       documento: ['', Validators.required],

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CadastroPessoaComponent } from '../pessoas/pessoas.component';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from 'src/app/services/api.service';
+import { UserService } from 'src/app/services/users.api.service';
 
 @Component({
   selector: 'app-lista-pessoas',
@@ -13,7 +13,7 @@ export class ListaPessoasComponent implements OnInit {
   modalRef: NgbModalRef | undefined;
   pessoaIdParaEditar: any;
 
-  constructor(private apiService: ApiService, private modalService: NgbModal) {}
+  constructor(private apiService: UserService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.carregarPessoas();

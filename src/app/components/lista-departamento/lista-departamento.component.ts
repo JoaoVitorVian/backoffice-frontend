@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from 'src/app/services/api.service';
+import { UserService } from 'src/app/services/users.api.service';
+import { DepartmentService } from 'src/app/services/department.api.service';
 import { DepartamentosComponent } from '../departamentos/departamentos.component';
 
 @Component({
@@ -13,14 +14,14 @@ export class ListaDepartamentoComponent {
   modalRef: NgbModalRef | undefined;
   departamentoIdParaEditar: any;
 
-  constructor(private apiService: ApiService, private modalService: NgbModal) {}
+  constructor(private departmentService: DepartmentService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.carregarDepartamento();
   }
 
   carregarDepartamento(): void {
-    this.apiService.obterDepartamento().subscribe(
+    this.departmentService.obterDepartamento().subscribe(
       (response) => {
         this.departamentos = response.data;
       },
@@ -40,7 +41,7 @@ export class ListaDepartamentoComponent {
       (result) => {
         if (result === 'success') {
           if (this.departamentoIdParaEditar !== null) {
-            this.apiService.editarDepartamento(this.departamentoIdParaEditar, departamento).subscribe(
+            this.departmentService.editarDepartamento(this.departamentoIdParaEditar, departamento).subscribe(
               (response) => {
                 console.log('departamento atualizado com sucesso!', response);
                 this.carregarDepartamento();
@@ -62,7 +63,7 @@ export class ListaDepartamentoComponent {
   }
 
   excluirDepartamento(departamento: any): void {
-    this.apiService.excluirDepartamento(departamento.id).subscribe(
+    this.departmentService.excluirDepartamento(departamento.id).subscribe(
       (response) => {
         this.carregarDepartamento();
         console.log('Departamento excluído com sucesso!', response);
